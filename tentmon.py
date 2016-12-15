@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+"""Tentmon script for collecting and storing sensor data"""
 
 import bme280
 import time
@@ -7,22 +8,24 @@ import mysql.connector
 
 
 # setup mysql connector
-cnx = mysql.connector.connect(user='tentsense', password='Love2CollectData!', host='byte.zer0ed0ut.net', database='growsys')
+cnx = mysql.connector.connect(user='tentsense', password='FAKEPASS', host='FAKEHOST', database='growsys')
 
 cursor = cnx.cursor()
 
+# Construct SQL query to insert sensor data into database
 add_record = ("INSERT INTO growsys.tent_env (temp, humidity, pressure) VALUES(%s, %s, %s)")
 
+# While the connection is valid, perform sensor reads
 while (cnx):
 
-	tentTemp,tentPressure,tentHumidity = bme280.readBME280All()
-	sensor_data = (tentTemp, tentHumidity, tentPressure)
-	
-	cursor.execute(add_record, sensor_data)
+    t_temp, t_pressure, t_humidity = bme280.readBME280All()
+    sensor_data = (t_temp, t_humidity, t_pressure)
 
-	cnx.commit()
+    cursor.execute(add_record, sensor_data)
 
-	time.sleep(15)
+    cnx.commit()
+
+    time.sleep(15)
 
 
 
