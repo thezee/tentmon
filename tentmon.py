@@ -1,10 +1,8 @@
 #! /usr/bin/env python
 """Tentmon script for collecting and storing sensor data"""
-
-import bme280
 import time
-import random
 import mysql.connector
+import bme280
 
 
 # setup mysql connector

@@ -18,11 +18,13 @@
 # http://www.raspberrypi-spy.co.uk/
 #
 #--------------------------------------
-import smbus
-import time
+
+
 from ctypes import c_short
 from ctypes import c_byte
 from ctypes import c_ubyte
+import smbus
+
 
 DEVICE = 0x77 # Default device I2C address
 
@@ -60,7 +62,7 @@ def readBME280All(addr=DEVICE):
   # Register Addresses
     REG_DATA = 0xF7
     REG_CONTROL = 0xF4
-    REG_CONFIG  = 0xF5
+    REG_CONFIG = 0xF5
 
     REG_HUM_MSB = 0xFD
     REG_HUM_LSB = 0xFE
