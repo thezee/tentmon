@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS log_water
 (
 	w_id		INT			NOT NULL AUTO_INCREMENT,
 	w_time		TIMESTAMP	NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	amount		INT			NOT NULL
+	amount		INT			NOT NULL,
+    ph          DEC(2,2)    NULL
 	
 	PRIMARY KEY ( w_id )
 	
