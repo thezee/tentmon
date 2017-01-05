@@ -1,0 +1,10 @@
+[Unit]
+Description=Tentmon Daemon
+After=network.target auditd.service
+
+[Service]
+SuccessExitStatus=0 1
+ExecStart=/home/pi/tentmon.py
+
+[Install]
+WantedBy=multi-user.target
